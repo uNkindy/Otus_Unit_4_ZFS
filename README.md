@@ -40,3 +40,33 @@ config:
  raid_zfs/lz4 on /raid_zfs/lz4 type zfs (rw,seclabel,xattr,noacl)  
  
  * Скачал файл War_and_Peace.txt при помощи команды wget.
+
+ [root@server ~]# ls -alh /root/War_and_Peace.txt   
+-rw-r--r--. 1 root root 3.3M Aug  2 08:36 /root/War_and_Peace.txt  
+
+ * Настроил компрессию соотвестсвенно названиям файловых систем командой __zfs compression=zle /raid_zfs/zle__.
+ 
+[root@server ~]# zfs get compression  
+NAME           PROPERTY     VALUE           SOURCE  
+raid_zfs       compression  off             default  
+raid_zfs/gzip  compression  gzip            local  
+raid_zfs/lz4   compression  lz4             local  
+raid_zfs/lzjb  compression  lzjb            local  
+raid_zfs/zle   compression  zle             local  
+ 
+ * Скопировал файл War_and_Peace.txt на 4 файловые системы с разной компрессией:
+ 
+ [root@server ~]# zfs get  compressratio,compression  
+NAME           PROPERTY       VALUE           SOURCE  
+raid_zfs       compressratio  1.47x           -  
+raid_zfs       compression    off             default  
+raid_zfs/gzip  compressratio  2.67x           -  
+raid_zfs/gzip  compression    gzip            local  
+raid_zfs/lz4   compressratio  1.63x           -  
+raid_zfs/lz4   compression    lz4             local  
+raid_zfs/lzjb  compressratio  1.36x           -  
+raid_zfs/lzjb  compression    lzjb            local  
+raid_zfs/zle   compressratio  1.01x           -  
+raid_zfs/zle   compression    zle             local  
+
+__В результате самым эффективным методом сжатия текстовых файлов является gzip.__
