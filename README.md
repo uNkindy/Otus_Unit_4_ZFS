@@ -15,6 +15,7 @@ ____
 #### 3. Определение алгоритма с наилучшим сжатием:
 * Создал пул из 3 дисков __sdb__, __sdc__, __sdd__ с именем __raid_zfs__ и объединением в __raidz1__.
 * Проверил корректность создания пула командой: 
+---
 
 [root@server ~]# zpool status  
   pool: raid_zfs  
@@ -29,7 +30,7 @@ config:
 	    sdd     ONLINE       0     0     0  
   
   errors: No known data errors  
-
+---
 * Создал 4 файловые системы __/raid_zfs/gzip__, __/raid_zfs/lz4__, __/raid_zfs/lzjb__, __/raid_zfs/zle__
  
  [root@server ~]# mount -t zfs  
