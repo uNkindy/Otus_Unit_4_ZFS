@@ -131,12 +131,28 @@ otus/hometask2  checksum  sha256     inherited from otus
 
   * Добавил в [файл zfs_settings](https://github.com/uNkindy/Otus_Unit_4_ZFS/blob/main/zfs_settings) все настройки settings.
  
+ ____
  
  #### 5. Нахождение сообщения от преподвателей:
  
-  * 
+  * Скачал локально файл __otus_task2.file__ и скопировал командой __scp__ на гостевую ОС.
+  * Создал фаловую систему __hometask3_.
+  
+  [root@server file_mess]# zfs list
+NAME             USED  AVAIL     REFER  MOUNTPOINT  
+otus            7.85M   344M       25K  /otus  
+otus/hometask   2.85M   344M     2.83M  /otus/hometask  
+otus/hometask2  1.81M   344M     1.81M  /otus/hometask2  
+otus/hometask3  2.85M   344M     2.83M  /otus/hometask3  
 
-  * 
+  * Восстановил __snapshot__ из файла __otus_task2.file__ на созданную файловую систему __/otus/hometask3/__ командой:
+
+[root@server file_mess]# zfs receive -F otus/hometask3 < /root/otus_task2.file  
+
+  * Нашел secret_message в папке __file_mess__:
+  
+  __https://github.com/sindresorhus/awesome__
+  
 
 
   
