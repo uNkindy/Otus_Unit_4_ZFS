@@ -77,7 +77,7 @@ raid_zfs/zle   	compression    	zle             local
 __В результате самым эффективным методом сжатия текстовых файлов является gzip.__
 ____
 
-#### Определение настроек pool'а:
+#### 4. Определение настроек pool'а:
 * Загрузил архив локально.
 * Скопировал командой __scp__ архив на гостевую ОС.
 * При помощи команды __zfs import__ собрал pool ZFS и проверил статус pool.
@@ -128,6 +128,13 @@ otus/hometask2  compression  zle             inherited from otus
 NAME            PROPERTY  VALUE      SOURCE  
 otus            checksum  sha256     local  
 otus/hometask2  checksum  sha256     inherited from otus  
+
+  * Добавил в [файл zfs_settings](https://github.com/uNkindy/Otus_Unit_4_ZFS/blob/main/zfs_settings) все настройки settings.
+ 
+ 
+ #### 5. Нахождение сообщения от преподвателей:
+ 
+  * 
 
   * 
 
